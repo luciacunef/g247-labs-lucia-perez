@@ -1,0 +1,299 @@
+/* =============================================================
+   1. RESET Y BASE
+   ============================================================= */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  line-height: 1.55;
+  color: #2e2822;
+  background-color: #faf6f0;
+}
+
+h1, h2, h3 {
+  font-family: Georgia, "Times New Roman", serif;
+  color: #1f1a15;
+}
+
+a {
+  color: #8b5e3c;
+}
+
+a:hover {
+  color: #5f3d24;
+}
+
+/* =============================================================
+   2. HEADER Y NAV CON FLEXBOX (común a todas las páginas)
+   ============================================================= */
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.25rem 2rem;
+  background-color: #2b221b;
+  color: #ffffff;
+}
+
+header strong {
+  font-size: 1.6rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+nav {
+  background-color: #3f3128;
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  padding: 0.9rem 2rem;
+  gap: 2rem;
+}
+
+nav a {
+  color: #f3ece1;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+nav a:hover {
+  color: #caa06a;
+}
+
+/* =============================================================
+   3. MAIN GENERAL (páginas sin aside: catálogo, estilos, acceso)
+   ============================================================= */
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+main h1 {
+  margin-top: 0;
+}
+
+/* Contenido repetido con estilo de tarjeta: secciones y artículos */
+main section {
+  background-color: #ffffff;
+  border: 1px solid #e7ddcf;
+  border-radius: 10px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+main article {
+  background-color: #faf6ee;
+  border: 1px solid #e7ddcf;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+main img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* =============================================================
+   4. FOOTER
+   ============================================================= */
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  margin-top: 1rem;
+  border-top: 1px solid #e7ddcf;
+  background-color: #f0e9dc;
+}
+
+footer p {
+  margin: 0.25rem 0;
+}
+
+/* =============================================================
+   5. PÁGINA PRINCIPAL (page-home): GRID porque existe <aside>
+   header, nav y footer ocupan las dos columnas; main y aside
+   comparten fila.
+   ============================================================= */
+.page-home {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-areas:
+    "header header"
+    "nav    nav"
+    "main   aside"
+    "footer footer";
+}
+
+.page-home header { grid-area: header; }
+.page-home nav     { grid-area: nav; }
+.page-home main    { grid-area: main; max-width: none; margin: 0; }
+.page-home aside   { grid-area: aside; }
+.page-home footer  { grid-area: footer; }
+
+.page-home aside {
+  background-color: #efe6d6;
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin: 2rem 2rem 2rem 0;
+  height: fit-content;
+}
+
+/* =============================================================
+   6. CATÁLOGO (page-catalogo): productos en fila flexible
+   ============================================================= */
+.page-catalogo main {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-content: flex-start;
+}
+
+.page-catalogo main > h1,
+.page-catalogo main > p {
+  flex-basis: 100%;
+}
+
+.page-catalogo main section {
+  flex: 1 1 240px;
+}
+
+/* =============================================================
+   7. ESTILOS / LOOKS (page-estilos)
+   ============================================================= */
+.page-estilos main section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.page-estilos main article {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.page-estilos main article img {
+  flex: 0 0 220px;
+}
+
+.page-estilos main article p {
+  flex: 1 1 220px;
+  margin: 0;
+}
+
+/* =============================================================
+   8. FORMULARIO DE ACCESO (page-login)
+   ============================================================= */
+.page-login main {
+  max-width: 500px;
+}
+
+.page-login form {
+  max-width: 420px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.page-login form p {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.page-login label {
+  display: block;
+  font-weight: 600;
+}
+
+.page-login input {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid #cfc3b2;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.page-login input:focus {
+  outline: none;
+  border-color: #8b5e3c;
+  box-shadow: 0 0 0 3px rgba(139, 94, 60, 0.2);
+}
+
+.page-login button {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #8b5e3c;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s ease-in-out;
+}
+
+.page-login button:hover {
+  background-color: #6f4a2f;
+}
+
+/* =============================================================
+   9. BREAKPOINTS RESPONSIVE
+   ============================================================= */
+@media (max-width: 768px) {
+  /* Portada: la composición de dos columnas pasa a una sola */
+  .page-home {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "header"
+      "nav"
+      "main"
+      "aside"
+      "footer";
+  }
+
+  .page-home aside {
+    margin: 0 2rem 2rem;
+  }
+
+  /* Catálogo: las tarjetas pasan de fila a una columna */
+  .page-catalogo main {
+    flex-direction: column;
+  }
+
+  .page-catalogo main section {
+    flex-basis: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .page-estilos main article {
+    flex-direction: column;
+  }
+
+  .page-estilos main article img {
+    flex-basis: auto;
+    width: 100%;
+  }
+}
